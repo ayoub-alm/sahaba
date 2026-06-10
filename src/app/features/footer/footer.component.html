@@ -1,0 +1,140 @@
+<footer id="contact" class="footer-section">
+  <!-- Top: Form and Contact info -->
+  <div class="footer-top section-padding">
+    <div class="container footer-grid">
+      <!-- Contact details -->
+      <div class="contact-info-col">
+        <h2 class="footer-title">تواصل معنا</h2>
+        <p class="footer-desc">
+          هل لديك أي استفسارات حول برنامج التمكين السياسي للمرأة أو ترغبين في الانضمام للورشات التكوينية القادمة؟ لا تترددي في التواصل معنا.
+        </p>
+
+        <div class="info-list">
+          <!-- Item 1 -->
+          <div class="info-item">
+            <mat-icon class="info-icon">location_on</mat-icon>
+            <div>
+              <strong>العنوان المقر:</strong>
+              <span>إقليم سطات، جهة الدار البيضاء - سطات، المغرب</span>
+            </div>
+          </div>
+          <!-- Item 2 -->
+          <div class="info-item">
+            <mat-icon class="info-icon">phone</mat-icon>
+            <div>
+              <strong>الهاتف الميداني:</strong>
+              <span class="number-latin">06 06 24 47 53</span>
+            </div>
+          </div>
+          <!-- Item 3 -->
+          <div class="info-item">
+            <mat-icon class="info-icon">mail</mat-icon>
+            <div>
+              <strong>البريد الإلكتروني للبرنامج:</strong>
+              <span class="number-latin">askcentrale&#64;gmail.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="brand-footer-block">
+          <img src="assets/logo.jpg" alt="سحابة الخير" class="brand-logo-small">
+          <div>
+            <h3>جمعية سحابة الخير</h3>
+            <p>تنمية مستدامة ومواطنة فاعلة</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reactive Form -->
+      <div class="form-col glass-panel">
+        <h3 class="form-title">التسجيل وتأكيد الحضور</h3>
+        
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" *ngIf="!isSuccess">
+          <!-- Full Name -->
+          <div class="form-field-wrapper">
+            <label for="fullName">الاسم الكامل *</label>
+            <input type="text" id="fullName" formControlName="fullName" placeholder="أدخل اسمك الكامل">
+            <div class="error-msg" *ngIf="contactForm.get('fullName')?.touched && contactForm.get('fullName')?.invalid">
+              <span *ngIf="contactForm.get('fullName')?.errors?.['required']">الاسم الكامل مطلوب لتأكيد الهوية.</span>
+              <span *ngIf="contactForm.get('fullName')?.errors?.['minlength']">يجب أن يحتوي الاسم على 3 أحرف على الأقل.</span>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-field-wrapper">
+            <label for="email">البريد الإلكتروني *</label>
+            <input type="email" id="email" formControlName="email" placeholder="example@mail.com" class="number-latin">
+            <div class="error-msg" *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+              <span *ngIf="contactForm.get('email')?.errors?.['required']">البريد الإلكتروني مطلوب للمراسلة.</span>
+              <span *ngIf="contactForm.get('email')?.errors?.['email']">الرجاء إدخال بريد إلكتروني صحيح.</span>
+            </div>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-field-wrapper">
+            <label for="phone">رقم الهاتف * (رقم مغربي)</label>
+            <input type="text" id="phone" formControlName="phone" placeholder="06XXXXXXXX" class="number-latin">
+            <div class="error-msg" *ngIf="contactForm.get('phone')?.touched && contactForm.get('phone')?.invalid">
+              <span *ngIf="contactForm.get('phone')?.errors?.['required']">رقم الهاتف مطلوب للتواصل المباشر.</span>
+              <span *ngIf="contactForm.get('phone')?.errors?.['pattern']">يرجى إدخال رقم هاتف مغربي صالح يبدأ بـ 05 أو 06 أو 07 متبوعاً بـ 8 أرقام.</span>
+            </div>
+          </div>
+
+          <!-- Message -->
+          <div class="form-field-wrapper">
+            <label for="message">الرسالة أو الاستفسار أو طلب المشاركة *</label>
+            <textarea id="message" formControlName="message" rows="4" placeholder="اكتب رسالتك أو حدد الورشة التي ترغب في حضورها..."></textarea>
+            <div class="error-msg" *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.invalid">
+              <span *ngIf="contactForm.get('message')?.errors?.['required']">محتوى الاستفسار مطلوب.</span>
+              <span *ngIf="contactForm.get('message')?.errors?.['minlength']">يجب أن تحتوي الرسالة على 10 أحرف على الأقل لتوضيح الطلب.</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-gold btn-submit" [disabled]="contactForm.invalid">
+            <span>إرسال الطلب وتأكيد الحضور</span>
+            <mat-icon>send</mat-icon>
+          </button>
+        </form>
+
+        <!-- Success Message -->
+        <div class="success-banner animate-fade-in" *ngIf="isSuccess">
+          <mat-icon class="success-icon">check_circle</mat-icon>
+          <h3>تم إرسال طلبك بنجاح!</h3>
+          <p>نشكرك على اهتمامك ببرنامج التمكين والمناصفة. سيقوم منسق المبادرة بجمعية سحابة الخير بالتواصل معك قريباً عبر الهاتف أو البريد الإلكتروني المدخل لتأكيد حضورك وتزويدك بجدول الأعمال التفصيلي.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom: Partnership Logos & Institutional recognition -->
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="partners-block">
+        <h4 class="partners-title">بدعم وشراكة استراتيجية مع</h4>
+        <div class="partners-logos">
+          <!-- Logo 1: Ministry / Fund -->
+          <div class="partner-logo-container">
+            <img src="assets/logo2.jpg" alt="صندوق الدعم لتشجيع تمثيلية النساء - وزارة الداخلية" class="footer-partner-logo">
+            <span>صندوق دعم تمثيلية النساء</span>
+          </div>
+          <!-- Logo 2: Sahabt Al-Khayr -->
+          <div class="partner-logo-container">
+            <img src="assets/logo.jpg" alt="جمعية سحابة الخير" class="footer-partner-logo circle-logo">
+            <span>جمعية سحابة الخير</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-copyright-row">
+        <p class="copyright-text">
+          &copy; <span class="number-latin">2026</span> جميع الحقوق محفوظة لجمعية سحابة الخير | مبادرة "صوتنا... دعم حقيقي لتحقيق المناصفة" بإقليم سطات.
+        </p>
+        <button mat-icon-button (click)="scrollToTop()" class="scroll-top-btn" aria-label="الرجوع للأعلى">
+          <mat-icon>arrow_upward</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,42 @@
+<section id="hero" class="hero-section">
+  <!-- Overlay background geometry -->
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-container">
+    <!-- Sponsor Badges -->
+    <div class="sponsor-badges animate-fade-in">
+      <span class="badge badge-partner">وزارة الداخلية</span>
+      <span class="badge badge-fund">صندوق دعم تمثيلية النساء</span>
+    </div>
+
+    <!-- Title and Slogans -->
+    <h1 class="hero-title animate-fade-in">
+      صوتنا... دعم حقيقي لتحقيق <span class="gold-text">المناصفة</span>
+    </h1>
+
+    <p class="hero-subtitle animate-fade-in">
+      برنامج التمكين وبناء القدرات الموجه لدعم الحضور السياسي والمشاركة الفعالة للمرأة في المجالس المنتخبة المحلية بمختلف جماعات إقليم سطات. تطلق جمعية سحابة الخير هذا البرنامج الهام للتوعية وتأهيل الكفاءات النسائية.
+    </p>
+
+    <!-- Call to Actions -->
+    <div class="hero-actions animate-fade-in">
+      <button class="btn-gold" (click)="scrollToSection('#workshops')">
+        <span>اكتشف ورش العمل والأنشطة</span>
+        <mat-icon>campaign</mat-icon>
+      </button>
+      <button class="btn-outline-white" (click)="scrollToSection('#about')">
+        <span>تعرف على أهدافنا</span>
+        <mat-icon>arrow_downward</mat-icon>
+      </button>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" (click)="scrollToSection('#about')">
+      <span class="scroll-text">انزل للاستكشاف</span>
+      <div class="mouse-icon">
+        <div class="wheel"></div>
+      </div>
+    </div>
+  </div>
+</section>

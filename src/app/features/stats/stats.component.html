@@ -1,0 +1,122 @@
+<section id="stats" class="section-padding stats-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header">
+      <span class="section-tag">لوحة القيادة المؤشرية</span>
+      <h2 class="section-title">الأثر بالأرقام والنسب الإحصائية</h2>
+      <p class="section-subtitle">حصيلة تفصيلية تعكس التنوع والدعم الموجه للنساء المستفيدات ومحيطهن في مختلف جماعات إقليم سطات.</p>
+    </div>
+
+    <!-- KPI Metric Cards Grid -->
+    <div class="kpi-grid" *ngIf="overview">
+      <!-- Card 1 -->
+      <div class="kpi-card glass-panel">
+        <div class="kpi-icon-box blue-glow">
+          <mat-icon>groups</mat-icon>
+        </div>
+        <div class="kpi-info">
+          <span class="kpi-value number-latin">{{ overview.totalParticipants }}+</span>
+          <span class="kpi-label">مستفيدة ومستفيد</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="kpi-card glass-panel">
+        <div class="kpi-icon-box gold-glow">
+          <mat-icon>history_edu</mat-icon>
+        </div>
+        <div class="kpi-info">
+          <span class="kpi-value number-latin">{{ overview.totalWorkshops }}</span>
+          <span class="kpi-label">ورشات عمل كبرى</span>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="kpi-card glass-panel">
+        <div class="kpi-icon-box teal-glow">
+          <mat-icon>map</mat-icon>
+        </div>
+        <div class="kpi-info">
+          <span class="kpi-value number-latin">{{ overview.municipalitiesCovered }}</span>
+          <span class="kpi-label">جماعة ترابية بإقليم سطات</span>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="kpi-card glass-panel">
+        <div class="kpi-icon-box rose-glow">
+          <mat-icon>workspace_premium</mat-icon>
+        </div>
+        <div class="kpi-info">
+          <span class="kpi-value number-latin">{{ overview.satisfactionRate }}%</span>
+          <span class="kpi-label">نسبة الرضا والتقييم الإيجابي</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Dashboard Grid -->
+    <div class="dashboard-grid">
+      <!-- Gender Chart -->
+      <div class="chart-card glass-panel">
+        <div class="chart-header">
+          <mat-icon class="chart-icon">pie_chart</mat-icon>
+          <h3>توزيع المشاركين حسب الجنس</h3>
+        </div>
+        <div class="chart-body">
+          <apx-chart
+            *ngIf="genderChartOptions"
+            [series]="genderChartOptions.series"
+            [chart]="genderChartOptions.chart"
+            [labels]="genderChartOptions.labels"
+            [colors]="genderChartOptions.colors"
+            [plotOptions]="genderChartOptions.plotOptions"
+            [dataLabels]="genderChartOptions.dataLabels"
+            [legend]="genderChartOptions.legend"
+            [stroke]="genderChartOptions.stroke"
+            [responsive]="genderChartOptions.responsive">
+          </apx-chart>
+        </div>
+      </div>
+
+      <!-- Age Distribution Chart -->
+      <div class="chart-card glass-panel">
+        <div class="chart-header">
+          <mat-icon class="chart-icon">bar_chart</mat-icon>
+          <h3>توزيع المشاركات حسب الفئات العمرية</h3>
+        </div>
+        <div class="chart-body">
+          <apx-chart
+            *ngIf="ageChartOptions"
+            [series]="ageChartOptions.series"
+            [chart]="ageChartOptions.chart"
+            [plotOptions]="ageChartOptions.plotOptions"
+            [xaxis]="ageChartOptions.xaxis"
+            [yaxis]="ageChartOptions.yaxis"
+            [colors]="ageChartOptions.colors"
+            [dataLabels]="ageChartOptions.dataLabels">
+          </apx-chart>
+        </div>
+      </div>
+
+      <!-- Academic levels Chart -->
+      <div class="chart-card glass-panel full-width-tablet">
+        <div class="chart-header">
+          <mat-icon class="chart-icon">school</mat-icon>
+          <h3>توزيع المشاركات حسب المستوى الأكاديمي</h3>
+        </div>
+        <div class="chart-body">
+          <apx-chart
+            *ngIf="academicChartOptions"
+            [series]="academicChartOptions.series"
+            [chart]="academicChartOptions.chart"
+            [plotOptions]="academicChartOptions.plotOptions"
+            [xaxis]="academicChartOptions.xaxis"
+            [yaxis]="academicChartOptions.yaxis"
+            [colors]="academicChartOptions.colors"
+            [dataLabels]="academicChartOptions.dataLabels">
+          </apx-chart>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<mat-toolbar class="navbar glass-panel">
+  <!-- Right side: Association Logo and title -->
+  <div class="brand" (click)="scrollTo('#hero')">
+    <img src="assets/logo.jpg" alt="جمعية سحابة الخير" class="logo-association">
+    <div class="brand-text">
+      <span class="brand-title">جمعية سحابة الخير</span>
+      <span class="brand-subtitle">المجتمع المدني الفعال</span>
+    </div>
+  </div>
+
+  <span class="spacer"></span>
+
+  <!-- Center: Desktop Navigation links -->
+  <div class="nav-links-desktop">
+    <button mat-button *ngFor="let link of navLinks" (click)="scrollTo(link.anchor)" class="nav-btn">
+      {{ link.label }}
+    </button>
+  </div>
+
+  <span class="spacer"></span>
+
+  <!-- Left side: Partner Logo & Mobile menu -->
+  <div class="partner-and-mobile">
+    <div class="partner-brand">
+      <img src="assets/logo2.jpg" alt="صندوق دعم تمثيلية النساء - وزارة الداخلية" class="logo-partner">
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="mobile-menu-btn" aria-label="قائمة التنقل">
+      <mat-icon>menu</mat-icon>
+    </button>
+    
+    <mat-menu #menu="matMenu" class="custom-mobile-menu">
+      <button mat-menu-item *ngFor="let link of navLinks" (click)="scrollTo(link.anchor)">
+        <span>{{ link.label }}</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

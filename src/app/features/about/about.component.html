@@ -1,0 +1,45 @@
+<section id="about" class="section-padding about-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header">
+      <span class="section-tag">سياق المبادرة</span>
+      <h2 class="section-title">عن مشروع تمكين المرأة السطاتية</h2>
+      <p class="section-subtitle">إطلاق مسار تنموي وتوعوي متكامل لدعم المشاركة السياسية للنساء وتكريس قيم المناصفة.</p>
+    </div>
+
+    <!-- Main Content Split -->
+    <div class="about-grid">
+      <!-- Image/Poster Area -->
+      <div class="about-visual animate-fade-in">
+        <div class="poster-card glass-panel">
+          <img src="assets/afiche2.jpg" alt="ملصق برنامج صوتنا دعم حقيقي لتحقيق المناصفة" class="poster-img" loading="lazy">
+          <div class="poster-overlay">
+            <span class="poster-tag">تحت شعار المبادرة</span>
+            <h3>صوتنا... دعم حقيقي لتحقيق المناصفة</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text/Objectives Area -->
+      <div class="about-content">
+        <h3 class="content-title">أهدافنا الاستراتيجية</h3>
+        <p class="content-desc">
+          يسعى هذا المشروع الإقليمي الهام، الذي تنظمه <strong>جمعية سحابة الخير</strong> بدعم من <strong>وزارة الداخلية</strong> عبر <strong>صندوق الدعم لتشجيع تمثيلية النساء</strong>، إلى تمكين الفاعلات والنساء المهتمات بالشأن المحلي بمختلف جماعات إقليم سطات من آليات العمل والمشاركة الفعالة في صياغة السياسات العمومية المحلية.
+        </p>
+
+        <!-- Grid of Objectives Cards -->
+        <div class="objectives-grid">
+          <div class="objective-card glass-panel" *ngFor="let obj of objectives">
+            <div class="icon-wrapper">
+              <mat-icon>{{ obj.icon }}</mat-icon>
+            </div>
+            <div class="obj-text">
+              <h4>{{ obj.title }}</h4>
+              <p>{{ obj.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

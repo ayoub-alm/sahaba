@@ -1,0 +1,113 @@
+<section id="workshops" class="section-padding workshops-section">
+  <div class="container">
+    <!-- Header -->
+    <div class="section-header">
+      <span class="section-tag">الفاعلية والتمكين</span>
+      <h2 class="section-title">أنشطتنا وورشاتنا التكوينية</h2>
+      <p class="section-subtitle">لمحة عن اللقاءات التحسيسية والبرامج التأهيلية المنظمة لبناء القدرات وتكريس تمثيلية المرأة.</p>
+    </div>
+
+    <!-- Workshops Grid -->
+    <div class="workshops-grid">
+      <div class="workshop-card glass-panel" *ngFor="let w of workshops">
+        <!-- Lazy Loaded Image container -->
+        <div class="card-image-box">
+          <img [src]="w.imagePath" [alt]="w.title" class="card-img" loading="lazy">
+          <div class="card-status-badge" [class.open]="w.registrationOpen">
+            {{ w.registrationOpen ? 'التسجيل مفتوح' : 'مكتمل' }}
+          </div>
+        </div>
+
+        <div class="card-content">
+          <!-- Metadata -->
+          <div class="card-meta">
+            <span class="meta-item">
+              <mat-icon>calendar_month</mat-icon>
+              <span>{{ w.date }}</span>
+            </span>
+            <span class="meta-item">
+              <mat-icon>location_on</mat-icon>
+              <span>{{ w.location }}</span>
+            </span>
+          </div>
+
+          <!-- Title & Brief -->
+          <h3 class="card-title">{{ w.title }}</h3>
+          <p class="card-excerpt">{{ w.description | slice:0:110 }}...</p>
+
+          <!-- Action -->
+          <div class="card-footer-action">
+            <button class="btn-outline btn-full-width" (click)="openDetails(w, detailsDialog)">
+              <span>عرض تفاصيل الورشة</span>
+              <mat-icon>open_in_new</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dialogue Template for Workshop Details -->
+  <ng-template #detailsDialog>
+    <div class="dialog-container" *ngIf="selectedWorkshop">
+      <div class="dialog-header">
+        <h2 class="dialog-title">{{ selectedWorkshop.title }}</h2>
+        <span class="dialog-subtitle">{{ selectedWorkshop.subtitle }}</span>
+        <button mat-icon-button mat-dialog-close class="dialog-close-btn" aria-label="إغلاق">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <div class="dialog-body">
+        <!-- Featured Image -->
+        <div class="dialog-image-box">
+          <img [src]="selectedWorkshop.imagePath" [alt]="selectedWorkshop.title" class="dialog-img" loading="lazy">
+        </div>
+
+        <!-- Info Details -->
+        <div class="dialog-info-details">
+          <div class="dialog-meta-grid">
+            <div class="meta-card">
+              <mat-icon class="gold-icon">schedule</mat-icon>
+              <div>
+                <strong>تاريخ اللقاء:</strong>
+                <span>{{ selectedWorkshop.date }}</span>
+              </div>
+            </div>
+            <div class="meta-card">
+              <mat-icon class="blue-icon">place</mat-icon>
+              <div>
+                <strong>مقر الورشة:</strong>
+                <span>{{ selectedWorkshop.location }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dialog-description">
+            <h3>حول الورشة</h3>
+            <p>{{ selectedWorkshop.description }}</p>
+          </div>
+
+          <div class="dialog-speakers" *ngIf="selectedWorkshop.speakerName">
+            <h3>التأطير العلمي</h3>
+            <div class="speaker-profile">
+              <mat-icon class="speaker-avatar">account_circle</mat-icon>
+              <div>
+                <h4>{{ selectedWorkshop.speakerName }}</h4>
+                <p>{{ selectedWorkshop.speakerRole || 'خبير ومؤطر البرنامج التوعوي' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dialog-footer">
+        <button class="btn-outline" mat-dialog-close>إغلاق النافذة</button>
+        <button class="btn-gold" *ngIf="selectedWorkshop.registrationOpen" mat-dialog-close>
+          <span>سجل حضورك الآن</span>
+          <mat-icon>check_circle</mat-icon>
+        </button>
+      </div>
+    </div>
+  </ng-template>
+</section>
